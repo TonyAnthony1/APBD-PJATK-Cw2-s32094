@@ -17,9 +17,9 @@ public sealed class ZadaniaLinq
     public IEnumerable<string> Zadanie01_StudenciZWarszawy()
     {
         
-        //return DaneUczelni.Studenci.Where(student => student.Miasto == "Warsaw").Select(student => $"{student.NumerIndeksu} {student.Imie} {student.Nazwisko} {student.Miasto}");
+        return DaneUczelni.Studenci.Where(student => student.Miasto == "Warsaw").Select(student => $"{student.NumerIndeksu} {student.Imie} {student.Nazwisko} {student.Miasto}");
         
-        throw Niezaimplementowano(nameof(Zadanie01_StudenciZWarszawy));
+        //throw Niezaimplementowano(nameof(Zadanie01_StudenciZWarszawy));
     }
 
     /// <summary>
