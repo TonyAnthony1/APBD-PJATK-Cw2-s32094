@@ -53,12 +53,12 @@ public sealed class ZadaniaLinq
     public IEnumerable<string> Zadanie03_StudenciPosortowani()
     {
         
-        // return DaneUczelni.Studenci
-        //     .OrderBy(stud => stud.Nazwisko)
-        //     .ThenBy(stud => stud.Imie)
-        //     .Select(stud => $"{stud.NumerIndeksu} {stud.Imie} {stud.Nazwisko}");
+         return DaneUczelni.Studenci
+             .OrderBy(stud => stud.Nazwisko)
+             .ThenBy(stud => stud.Imie)
+             .Select(stud => $"{stud.NumerIndeksu} {stud.Imie} {stud.Nazwisko}");
         
-        throw Niezaimplementowano(nameof(Zadanie03_StudenciPosortowani));
+        //throw Niezaimplementowano(nameof(Zadanie03_StudenciPosortowani));
     }
 
     /// <summary>
