@@ -75,7 +75,9 @@ public sealed class ZadaniaLinq
     {
         var rezultat = DaneUczelni.Przedmioty.FirstOrDefault(przedmiot => przedmiot.Kategoria == "Analytics");
         if (rezultat == null)
-            yield return "Nir znaleziono przedmiotu w kategorii Analytics";
+            yield return "Nie znaleziono przedmiotu w kategorii Analytics";
+        else
+            yield return $"{rezultat.Nazwa}";
         //throw Niezaimplementowano(nameof(Zadanie04_PierwszyPrzedmiotAnalityczny));
     }
 
