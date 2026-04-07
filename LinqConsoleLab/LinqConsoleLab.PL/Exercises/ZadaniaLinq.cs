@@ -34,10 +34,10 @@ public sealed class ZadaniaLinq
     public IEnumerable<string> Zadanie02_AdresyEmailStudentow()
     {
         
-        //return DaneUczelni.Studenci.Select(student => $"{student.NumerIndeksu} {student.Email}");
+        return DaneUczelni.Studenci.Select(student => $"{student.NumerIndeksu} {student.Email}");
 
         
-        throw Niezaimplementowano(nameof(Zadanie02_AdresyEmailStudentow));
+        //throw Niezaimplementowano(nameof(Zadanie02_AdresyEmailStudentow));
     }
 
     /// <summary>
