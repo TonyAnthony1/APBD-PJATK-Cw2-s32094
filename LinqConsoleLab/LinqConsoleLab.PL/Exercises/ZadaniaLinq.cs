@@ -169,7 +169,13 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie09_TrzyNajnowszeZapisy()
     {
-        throw Niezaimplementowano(nameof(Zadanie09_TrzyNajnowszeZapisy));
+        
+        return DaneUczelni.Zapisy.OrderByDescending(zapis =>zapis.DataZapisu)
+            .Take(3)
+            .Select(zapis => $"{zapis.DataZapisu:yyyy-MM-dd} | StudentId: {zapis.StudentId} | PrzedmiotId: {zapis.PrzedmiotId}");
+        
+        
+        //throw Niezaimplementowano(nameof(Zadanie09_TrzyNajnowszeZapisy));
     }
 
     /// <summary>
