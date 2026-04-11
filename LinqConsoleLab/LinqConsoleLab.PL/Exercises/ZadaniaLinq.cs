@@ -1,3 +1,4 @@
+using System.Data.Common;
 using LinqConsoleLab.PL.Data;
 using LinqConsoleLab.PL.Models;
 
@@ -366,7 +367,15 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Wyzwanie02_PrzedmiotyStartujaceWKwietniuBezOcenKoncowych()
     {
-        throw Niezaimplementowano(nameof(Wyzwanie02_PrzedmiotyStartujaceWKwietniuBezOcenKoncowych));
+        return DaneUczelni.Przedmioty
+            .Where(przedmiot => przedmiot.DataStartu.Month == 4 && przedmiot.DataStartu.Year == 2026)
+            .Join(DaneUczelni.Zapisy,
+                pr => pr.Id,
+                z => z.PrzedmiotId,
+                (p,z) => new {p,z})
+            .GroupBy(x => x.p.Nazwa)
+            .Where(g => g.All(x => !x.z.OcenaKoncowa.HasValue))
+            .Select(g => g.Key);
     }
 
     /// <summary>
@@ -402,7 +411,13 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Wyzwanie04_MiastaILiczbaAktywnychZapisow()
     {
-        throw Niezaimplementowano(nameof(Wyzwanie04_MiastaILiczbaAktywnychZapisow));
+        return DaneUczelni.Studenci.Join(DaneUczelni.Zapisy.Where(z => z.CzyAktywny),
+            s => s.Id,
+            z => z.StudentId,
+            (s,z) => s.Miasto)
+            .GroupBy(m => m)
+            .OrderByDescending(g => g.Count())
+            .Select(g => $"{g.Key} | Aktywne zapisy: {g.Count()}");
     }
 
     private static NotImplementedException Niezaimplementowano(string nazwaMetody)
